@@ -7,18 +7,20 @@ import { LoginPage } from './pages/login/login.page';
 import { PokemonCataloguePage } from './pages/pokemon-catalogue/pokemon-catalogue.page';
 import { ProfilePage } from './pages/profile/profile.page';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import {HttpClientModule} from "@angular/common/http";
 
 // Decorator
 @NgModule({
-  declarations: [
+  declarations: [ // Components comes to declarations
     AppComponent,
     LoginPage,
     PokemonCataloguePage,
     ProfilePage,
     LoginFormComponent
   ],
-  imports: [
+  imports: [ // Modules comes to imports
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
