@@ -10,14 +10,17 @@ import { ProfilePage } from './pages/profile/profile.page';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import {FormsModule} from "@angular/forms";
 
+
 // Decorator
 @NgModule({
+
   declarations: [ // Components comes to declarations
     AppComponent,
     LoginPage,
     PokemonCataloguePage,
     ProfilePage,
     LoginFormComponent
+
   ],
   imports: [ // Modules comes to imports
     BrowserModule,

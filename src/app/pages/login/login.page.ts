@@ -13,4 +13,5 @@ export class LoginPage {
   handleLogin(): void {
     this.router.navigateByUrl("/pokemon")
   }
+
 }
