@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {map, Observable, of, switchMap} from "rxjs";
 import {User} from "../models/user.model";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import {environment} from "src/environments/environment";
 
 const {apiUsers, apiKey} = environment
 
