@@ -23,6 +23,9 @@ export class LoginService {
             return this.createUser(username);
           }
           return of(user);
+        }),
+        tap((user: User)=>{
+
         })
       )
   }
