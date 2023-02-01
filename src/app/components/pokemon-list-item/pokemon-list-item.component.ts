@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import {Component, Input} from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import {Pokemon} from "../../models/pokemon.model";
 import {PokemonService} from "../../services/pokemon.service";
 
@@ -8,16 +10,30 @@ import {PokemonService} from "../../services/pokemon.service";
   styleUrls: ['./pokemon-list-item.component.css']
 })
 export class PokemonListItemComponent {
-@Input() pokemon?: Pokemon;
+  @Input() pokemon?: Pokemon;
 
+  get loading(): boolean {
+    return this.pokemonService.loading;
+  }
 
-constructor(private readonly pokemonService: PokemonService) {}
+  constructor(private readonly pokemonService: PokemonService) {}
 
   getPokemonImage() {
   const pokemonId = this.pokemonService.geturl(this.pokemon?.url)
 
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`
+  }
 
+  addPokemonToCollection(): void {
+    this.pokemonService.addToCollection(this.pokemon!.name)
+      .subscribe({
+        next: (response: User) => {
+          console.log("NEXT", response);
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log(error.message);
+        }
+      })
   }
 
 }
