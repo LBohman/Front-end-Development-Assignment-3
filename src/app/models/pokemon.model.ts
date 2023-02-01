@@ -1,13 +1,27 @@
 export interface Pokemon{
-  count: number;
-  next: string;
-  previous: null;
-  results: PokemonResults;
+  id: number;
+  name: string;
+  abilities: Abilities;
+  base_experience: number;
+  height: number;
+  weight: number;
+
+
+
+
 }
 
-export interface PokemonResults{
-  name: string
+export interface Abilities{
+  ability: Ability
   url: string;
+  slot: number;
 }
+
+
+export interface Ability{
+  name: string;
+  url: string
+}
+
 
 
