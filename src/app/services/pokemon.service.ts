@@ -48,6 +48,7 @@ export class PokemonService {
     }
 
     if (this.userService.pokemonInCollection(pokeName)) {
+      // Display a message to the user that the pokemon already exists in their collection
       throw new Error("addToCollection: Pokemon already in collection");
     }
 
