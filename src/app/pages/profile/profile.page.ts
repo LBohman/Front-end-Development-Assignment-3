@@ -12,9 +12,4 @@ export class ProfilePage {
   constructor(private readonly userService: UserService) {}
 
   public collection: Pokemon[] = this.userService.caughtPokemon();
-
-  wer = console.log(this.collection);
-  
-
-  // collection = [{name: "wartortle", url: "https://pokeapi.co/api/v2/pokemon/8/"}];
 }
