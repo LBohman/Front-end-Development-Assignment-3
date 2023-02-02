@@ -46,13 +46,16 @@ export class PokemonCatalogueService {
       )
       .subscribe({
         next: (pokemons: Pokemon[]) => {
-          console.log(pokemons)
+          // console.log(pokemons)
           this._pokemons = pokemons;
         },
         error: (error: HttpErrorResponse) => {
           this._error = error.message;
         }
       })
+  }
 
+  public pokemonByName(name: string): Pokemon | undefined {
+    return this._pokemons.find((pokemon: Pokemon) => pokemon.name === name);
   }
 }
