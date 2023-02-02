@@ -8,7 +8,9 @@ import { Pokemon } from '../models/pokemon.model';
   providedIn: 'root'
 })
 export class UserService {
+  
   private _user?: User;
+  
   public get user(): User | undefined {
     return this._user;
   }
@@ -29,5 +31,13 @@ export class UserService {
     }
     
     return false;
+  }
+
+  public caughtPokemon() {
+    if (this._user?.pokemon.length === 0) {
+      return [];
+    }
+
+    return this._user!.pokemon;
   }
 }

@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';
+import { ProfileCollectionComponent } from './components/profile-collection/profile-collection.component';
 
 
 // Decorator
@@ -25,7 +26,8 @@ import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon
     LoginFormComponent,
     NavbarComponent,
     PokemonListComponent,
-    PokemonListItemComponent
+    PokemonListItemComponent,
+    ProfileCollectionComponent
 
   ],
   imports: [ // Modules comes to imports
