@@ -1,16 +1,14 @@
-
-<ul  class="px-6 py-4">
+<ul class="px-6 py-4">
   <li class="grid grid-cols-3 gap-4 bg-white rounded-lg shadow-md">
     <div *ngIf="pokemon !== undefined" class="grid bg-white rounded-lg shadow-md justify-center">
-       <p class="text-center">{{pokemon.name}}</p>
+      <p class="text-center">{{pokemon.name}}</p>
       <img src="{{getPokemonImage()}}" alt="{{pokemon.name}}">
 
     </div>
-    <button 
+    <button
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mt-4"
-      (click)="addPokemonToCollection()"
-    >Add to Collect</button>
-    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg mt-4">Show more info
+      (click)="addPokemonToCollection()">Add to Collect
     </button>
+    <!--    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg mt-4">Show more info</button>-->
   </li>
 </ul>
