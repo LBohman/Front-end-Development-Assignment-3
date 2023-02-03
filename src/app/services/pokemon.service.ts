@@ -74,4 +74,33 @@ export class PokemonService {
     )
   }
 
+  public removePokemonFromCollection(pokeList: Pokemon[]): Observable<User> {
+    if (!this.userService.user) {
+      throw new Error("addToCollection: There is no user");
+    }
+    console.log("from service", pokeList);
+    const user: User = this.userService.user;
+
+    const headers = new HttpHeaders({
+      "content-type": "application/json",
+      "x-api-key": apiKey
+    });
+
+    this._loading = true;
+
+    return this.http.patch<User>(`${apiUsers}/${user.id}`, {
+      pokemon: pokeList
+    }, {
+      headers
+    })
+    .pipe(
+      tap((updatedUser: User) => {
+        this.userService.user = updatedUser;
+      }),
+      finalize(() => {
+        this._loading = false;
+      })
+    )
+  }
+
 }
