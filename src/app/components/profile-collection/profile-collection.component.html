@@ -1,12 +1,19 @@
+
+
 <div>
-  <h1 class="text-2xl font-bold mb-4">{{ user }}'s Collection</h1>
-  <div class="px-6 py-4 grid grid-cols-3 gap-4 bg-white rounded-lg shadow-md">
-    <div *ngFor="let pokemon of collection" class="bg-white rounded-lg shadow-md justify-center text-center py-4">
-      <img src="{{getPokemonImage(pokemon.url)}}" alt="{{ pokemon.name }}">
-      <h1 class="text-xl font-bold mt-2">{{ pokemon.name }}</h1>
-      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg mt-4">
-        Release
-      </button>
+  <h1 class="text-2xl font-bold mb-4 justify-center text-center">{{ username }}'s Collection</h1>
+  <div class="px-6 py-4 grid grid-cols-3 gap-4">
+    <div class="bg-white rounded-lg shadow-md justify-center text-center"
+         *ngFor="let pokemon of collection; let i = index">
+      <div class="bg-white rounded-lg shadow-md">
+        <div class="p-4">
+          <img src="{{getPokemonImage(pokemon.url)}}" alt="{{ pokemon.name }}">
+          <h1 class="text-xl font-bold mt-2">{{ pokemon.name }}</h1>
+          <button (click)="deletePokemon(i)"
+                  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg mt-4">Release
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
