@@ -30,7 +30,7 @@ export class PokemonService {
     if ( url === undefined ) {
       return "";
     }
-    
+
     const urlArray = url?.split("/");
     return urlArray[6];
   }
@@ -39,7 +39,7 @@ export class PokemonService {
     if (!this.userService.user) {
       throw new Error("addToCollection: There is no user");
     }
-    
+
     const user: User = this.userService.user;
     const pokemon: Pokemon | undefined = this.catalogueService.pokemonByName(pokeName);
 
@@ -73,5 +73,42 @@ export class PokemonService {
       })
     )
   }
+
+
+  public removeFromCollection(pokeName: string): Observable<User> {
+    if (!this.userService.user) {
+      throw new Error("removeFromCollection: There is no user");
+    }
+
+    const user: User = this.userService.user;
+
+    // Remove pokemon from user data
+    const updatedPokemon = user.pokemon.filter(p => p.name !== pokeName);
+
+    const headers = new HttpHeaders({
+      "content-type": "application/json",
+      "x-api-key": apiKey
+    });
+
+    this._loading = true;
+
+    return this.http.patch<User>(`${apiUsers}/${user.id}`, {
+      pokemon: updatedPokemon
+    }, {
+      headers
+    })
+      .pipe(
+        tap((updatedUser: User) => {
+          // Update user data in session storage
+          this.userService.user = updatedUser;
+        }),
+        finalize(() => {
+          this._loading = false;
+        })
+      );
+  }
+
+
+
 
 }
