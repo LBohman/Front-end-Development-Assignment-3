@@ -4,7 +4,7 @@
     <div class="bg-white rounded-lg shadow-md justify-center text-center"
          *ngIf="pokemon !== undefined">
       <div class="bg-white rounded-lg shadow-md" >
-        <div class="p-4">
+        <div class="p-4 flex flex-col items-center" >
           <p class="text-center">{{pokemon.name}}</p>
           <img src="{{getPokemonImage()}}" alt="{{pokemon.name}}">
 <!--          <img src="./assets/favorite1.png" alt="favorite" class="">-->
