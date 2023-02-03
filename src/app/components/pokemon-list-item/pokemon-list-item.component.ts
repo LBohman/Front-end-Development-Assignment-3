@@ -25,6 +25,7 @@ export class PokemonListItemComponent {
   }
 
   addPokemonToCollection(): void {
+    // this.pokemon.isFavorite = !this.pokemon.isFavorite
     this.pokemonService.addToCollection(this.pokemon!.name)
       .subscribe({
         next: (response: User) => {
