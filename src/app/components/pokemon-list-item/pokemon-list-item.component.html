@@ -1,19 +1,16 @@
-<div>
-<!--  <div class="px-6 py-4 grid grid-cols-3 gap-4">-->
-    <div>
-    <div class="bg-white rounded-lg shadow-md justify-center text-center"
-         *ngIf="pokemon !== undefined">
-      <div class="bg-white rounded-lg shadow-md" >
-        <div class="p-4 flex flex-col items-center" >
-          <p class="text-center">{{pokemon.name}}</p>
-          <img src="{{getPokemonImage()}}" alt="{{pokemon.name}}">
-<!--          <img src="./assets/favorite1.png" alt="favorite" class="">-->
-          <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mt-4"
-            (click)="addPokemonToCollection()">Add to Collect
-          </button>
-        </div>
+
+  <div class="bg-white rounded-lg shadow-md justify-center text-center"
+       *ngIf="pokemon !== undefined">
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="p-4 flex flex-col items-center">
+        <p class="text-center">{{pokemon.name}}</p>
+        <img src="{{getPokemonImage()}}" alt="{{pokemon.name}}">
+        <!--          <img src="./assets/favorite1.png" alt="favorite" class="">-->
+        <button class="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg mt-4" *ngIf="pokemon.isInCollection">Collected</button>
+        <button *ngIf="!pokemon.isInCollection" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mt-4"
+          (click)="addPokemonToCollection()">Add to Collect
+        </button>
       </div>
     </div>
   </div>
-</div>
+
