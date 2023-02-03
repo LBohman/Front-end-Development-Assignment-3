@@ -30,16 +30,18 @@ export class PokemonService {
     if ( url === undefined ) {
       return "";
     }
-    
+
     const urlArray = url?.split("/");
     return urlArray[6];
   }
+
+
 
   public addToCollection(pokeName: string): Observable<User> {
     if (!this.userService.user) {
       throw new Error("addToCollection: There is no user");
     }
-    
+
     const user: User = this.userService.user;
     const pokemon: Pokemon | undefined = this.catalogueService.pokemonByName(pokeName);
 
