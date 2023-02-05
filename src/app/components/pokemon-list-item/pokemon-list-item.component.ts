@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import {Component, Input} from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
 import {Pokemon} from "../../models/pokemon.model";
 import {PokemonService} from "../../services/pokemon.service";
 
@@ -16,7 +17,7 @@ export class PokemonListItemComponent {
     return this.pokemonService.loading;
   }
 
-  constructor(private readonly pokemonService: PokemonService) {}
+  constructor(private readonly pokemonService: PokemonService, private readonly userService: UserService) {}
 
   getPokemonImage() {
   const pokemonId = this.pokemonService.geturl(this.pokemon?.url)
@@ -36,5 +37,16 @@ export class PokemonListItemComponent {
         }
       })
   }
+
+  inCollection = false;
+  test(pokeName: string) : void {
+    // console.log(this.userService.pokemonInCollection(pokeName));
+    if (this.userService.pokemonInCollection(pokeName) === true) {
+      // console.log(`You already own ${pokeName}!`);
+      this.inCollection = true;
+    }
+  }
+
+
 
 }
