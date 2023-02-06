@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
+import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +10,19 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfilePage {
 
+  get user(): User | undefined {
+    return this.userService.user;
+  }
+
+  get collection(): Pokemon[] {
+    if (this.userService.user) {
+      return this.userService.user.pokemon;
+    }
+
+    return [];
+  }
+
   constructor(private readonly userService: UserService) {}
 
-  public collection: Pokemon[] = this.userService.caughtPokemon();
+  // public collection: Pokemon[] = this.userService.caughtPokemon();
 }
